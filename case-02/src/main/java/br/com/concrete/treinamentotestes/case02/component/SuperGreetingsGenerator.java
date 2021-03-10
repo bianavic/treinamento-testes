@@ -4,12 +4,23 @@ import java.time.LocalDate;
 
 public class SuperGreetingsGenerator {
 
+
+    private DateProvider dateProvider;
+
+    public SuperGreetingsGenerator(DateProvider dateProvider) {
+        this.dateProvider = dateProvider;
+    }
+
     public String sayHello(String personName, int ageCompletedThisYear) {
 
         int currentYear = LocalDate.now().getYear();
 
-        int decade = (currentYear - ageCompletedThisYear + 1 - ((currentYear - ageCompletedThisYear + 1) % 10)) % 100;
+        int decade = (currentYear - ageCompletedThisYear - ((currentYear - ageCompletedThisYear) % 10)) % 100;
 
-        return "Hello World, " + personName + "! " + decade + "'s rocks!!!";
+        String template = "Hello World, %s! %02d's rocks!!!";
+
+        return String.format(template, personName, decade);
+        //return "Hello World, " + personName + "! " + decade + "'s rocks!!!";
     }
+
 }
