@@ -13,7 +13,7 @@ public class UserService {
 
     public String formattedFullNameFrom(User user) {
 
-        return (user.getFirstName() + " " + user.getLastName()).toUpperCase().trim();
+        return (user.getFirstName() + " " + user.getLastName());
     }
 
     public void saveUser(User user) {
