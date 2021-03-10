@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.concrete.treinamentotestes.case06.service.UserServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-10T06:56:01" hostname="CPX-EURZCSC5CVJ" time="0.472">
+  <properties/>
+  <testcase name="savingNewUserSuccess()" classname="br.com.concrete.treinamentotestes.case06.service.UserServiceTest" time="0.472"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
