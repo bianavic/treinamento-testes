@@ -14,21 +14,33 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
-    @InjectMocks
+    @InjectMocks // classe para testar
     private UserService userService;
 
-    @Mock
+    @Mock // dependencias que iremos usar
     private UserRepository userRepository;
 
     @Test
-    void test01() {
+    void aoVerificarSeusuarioExisteQuandoNaoTemUsuarioComMesmoEmailInformadoNoBancoDeveRetornarNull() {
+
+        // injetar o comportamento
+        Mockito.when(userRepository.getUserByEmail("email1")).thenReturn(null);
 
         UserRequest userRequest = new UserRequest("email1", "senha");
 
-        User returnedDeletedUser = new User("ID", "email1", "SENHA", false);
-
-        Mockito.when(userRepository.getUserByEmail("email1")).thenReturn(returnedDeletedUser);
-
         Assertions.assertFalse(userService.isExistingUser(userRequest));
+    }
+
+    @Test
+    void aoVerificarSeusuarioExisteQuandoNaoTemUsuarioComMesmoEmailInformadoNoBancoDeveRetornarFalse() {
+
+        User user = new User("1", "email1", "senha1", false);
+
+        // injetar o comportamento
+        Mockito.when(userRepository.getUserByEmail("email1")).thenReturn(user);
+
+        UserRequest userRequest = new UserRequest("email1", "senha");
+
+        Assertions.assertTrue(userService.isExistingUser(userRequest));
     }
 }
